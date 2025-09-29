@@ -1,9 +1,77 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --button-bg-color: #2563eb;
+    --button-text-color: white;
+    --form-bg-color: #f9f9f9;
+    --input-bg-color: #ccc;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --spacing-xs: 0.5em;
+    --spacing-s: 1em;
+    --spacing-m: 2em;
+    --roundness-s: 5px;
+    --roundness-m: 8px;
+    --roundness-l: 10px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: var(--spacing-m);
+    gap: var(--spacing-m);
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    gap: var(--spacing-s);
+}
+
 .form-container {
     display: flex;
     flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
-    width: 30%;
-    padding: 1em;
-    gap: 1em;
+    width: 100%;
+    padding: var(--spacing-s);
+    gap: var(--spacing-s);
+    border-radius: var(--roundness-l);
+    background-color: var(--form-bg-color);
+}
+
+.form-field {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    gap: var(--spacing-s);
+}
+
+label {
+    width: 100%;
+}
+
+select, input {
+    border: 1px solid var(--input-bg-color);
+    border-radius: var(--roundness-s);
+    width: 100%;
+    padding-left: var(--spacing-xs);
+}
+
+button {
+    padding: var(--spacing-xs) var(--spacing-s);
+    border: none;
+    border-radius: var(--roundness-s);
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    cursor: pointer;
 }
