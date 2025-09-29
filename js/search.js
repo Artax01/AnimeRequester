@@ -5,18 +5,11 @@ var inputParametre = document.getElementById('parameter');
 
 btnSearch.addEventListener('click', async function() {
     param = inputParametre.value;
-    // console.log("Recherche de : " + param);
     var reponse = await rechercheParNom(param);
 
-    
+    let liste = [...reponse.data];
 
-    console.log(reponse.data[0].title);
-
-    reponse.data.forEach(ligne => {
-        createCard(ligne);
+    liste.forEach(anime => {
+        createCard(anime);
     });
-
-
-    
-
 });
