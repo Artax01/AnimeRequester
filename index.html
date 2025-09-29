@@ -1,13 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mon site web</title>
 
-    <script defer src="js/requestApi.js"></script>
-</head>
-<body>
-    
-</body>
+
+        <script defer src="js/requestApi.js"></script>
+        <script defer src="js/search.js"></script>
+
+        <link rel="stylesheet" href="css/style.css">
+
+        
+    </head>
+    <body>
+        <div class="container">
+            <h1>Anime Requester</h1>
+
+            <div class="form-container">
+                <div class="form-field">
+                    <label for="filter">Choisissez un filtre</label>
+                    <select id="filter">
+                        <option value="byTitle">Recherche par titre</option>
+                        <option value="byId">Recherche par ID</option>
+                        <option value="byRang">Recherche par rang</option>
+                        <option value="byGenre">Recherche par genre</option>
+                        <option value="listOfGenres">Liste des genre</option>
+                    </select>
+                </div>
+
+                <div class="form-field">
+                    <label for="parameter">Entrez le paramètre</label>
+                    <input type="text" id="parameter" placeholder="Paramètre">
+                </div>
+
+                <div class="form-field">
+                    <div class="form-buttons">
+                        <button id="searchBtn">Rechercher</button>
+                        <button id="clearBtn">Réinitialiser</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
 </html>
+
