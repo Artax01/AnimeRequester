@@ -5,12 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Anime Requester</title>
 
+        <link rel="stylesheet" href="css/style.css">
+
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
          <script defer src="js/requestApi.js"></script>
         <script defer src="js/search.js"></script>
-        <script defer src="js/createCard.js"></script>
+        <script defer src="js/cards.js"></script>
 
-        <link rel="stylesheet" href="css/style.css">
+        
     </head>
     <body>
         <div class="form-content">
@@ -28,10 +30,80 @@
                     </select>
                 </div>
 
-                <div class="form-field">
+                <div class="form-field" id="paramField">
                     <label for="parameter">Entrez le paramètre</label>
                     <input type="text" id="parameter" placeholder="Paramètre">
                 </div>
+
+                <div class="checkbox-group mt-7" id="checkboxGroup" style="display: none;">
+
+                    <div class="flex items-center mb-4">
+                        <label for="Award Winning">Seulement les animes primés</label>
+                        <input type="checkbox" name="Award Winning" id="Award Winning">
+
+                    </div>
+
+                    <div class="flex items-center mb-4">
+                        <label for="Action">Action</label>
+                        <input type="checkbox" name="Action" id="Action">
+                    </div>
+
+                    <div class="flex items-center mb-4">
+                        <label for="Suspense">Suspense</label>
+                        <input type="checkbox" name="Suspense" id="Suspense">
+                    </div>
+
+                    <div class="flex items-center mb-4">
+                        <label for="Horror">Horror</label>
+                        <input type="checkbox" name="Horror" id="Horror">
+                    </div>
+
+                    
+                </div>
+
+
+                <div style="display: flex; align-items: center; margin: 24px 0;">
+                    <hr style="flex: 1; border: none; border-top: 1px solid #ccc;">
+                    <button id="toggleMoreFilter" style="color: blue; margin: 0 16px; padding: 6px 18px; border-radius: 20px; border: 1px solid #ccc; background: #f9f9f9; cursor: pointer;">
+                        Afficher les filtres avancés
+                    </button>
+                    <hr style="flex: 1; border: none; border-top: 1px solid #ccc;">
+                </div>  
+
+
+                
+                <div class="more-filter" id="moreFilter" style="display: none;">
+                    <div class="radio-group" id="sortGroup">
+                        <label for="filter">Classer par :</label>
+                        <div class="flex items-center">
+                            <input checked value="ranking" class="" type="radio" name="sort" id="rang">
+                            <label for="rang">Rang</label>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <input value="title"  class="" type="radio" name="sort" id="nom">
+                            <label for="nom">Nom</label>
+                        </div>
+                    </div>
+                    <div class="radio-group" id="sortByGroup">
+                        <label for="filter">Ordre :</label>
+                        <div class="flex items-center">
+                            <input value="asc" checked class="" type="radio" name="sortBy" id="asc">
+                            <label for="asc">Croissant</label>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <input value="desc" class="" type="radio" name="sortBy" id="desc">
+                            <label for="desc">Décroissant</label>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                
+
+
+
+
 
                 <div class="form-field">
                     <div class="form-buttons">
