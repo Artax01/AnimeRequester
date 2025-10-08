@@ -29,3 +29,18 @@ function clearCards() {
     const container = document.getElementById('card-container');
     container.innerHTML = '';
 }
+
+function createGenre() {
+    const genres = ["Action", "Suspense", "Horror", "Ecchi", "Avant Garde", "Sports", "Supernatural", "Fantasy", "Gourmet", "Boys Love", "Drama", "Comedy", "Mystery", "Girls Love", "Slice of Life", "Adventure", "Sci Fi", "Erotica", "Hentai"];
+    const checkboxGroup = document.getElementById('checkboxGroup');
+    checkboxGroup.innerHTML = '';
+
+    genres.forEach(genre => {
+        checkboxGroup.innerHTML += `
+            <div class="flex items-center">
+                <label for="${genre.split('').join('-')}">${genre}</label>
+                <input type="checkbox" name="${genre}" id="${genre.split('').join('-')}">
+            </div>
+        `;
+    });
+}

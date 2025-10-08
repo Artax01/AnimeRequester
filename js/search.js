@@ -6,8 +6,6 @@ var select = document.getElementById('filter');
 var paramField = document.getElementById('paramField');
 var checkboxGroup = document.getElementById('checkboxGroup');
 
-//detecter le btn de recherche
-
 btnSearch.addEventListener('click', async function() {
 
     param = inputParametre.value;
@@ -21,15 +19,8 @@ btnSearch.addEventListener('click', async function() {
         reponse = await rechercheParGenre(param);
     }else if(select.value == 'byId'){
         reponse = await rechercheParID(param);
-        createCard(reponse );  
+        createCard(reponse);
     }
-
-    // if (!reponse || !Array.isArray(reponse.data)) {
-    //     // console.error("La réponse ne contient pas de propriété 'data' valide :", reponse);
-    //     alert("Aucun résultat trouvé ou erreur lors de la recherche.");
-    //     return;
-    // }
-
 
     let liste = [...reponse.data];
 
@@ -61,6 +52,7 @@ select.addEventListener('change', function() {
             console.log("genre");
             paramField.style.display = 'none';
             checkboxGroup.style.display = 'block';
+            createGenre();
             break;
         default:
             paramField.style.display = 'flex';

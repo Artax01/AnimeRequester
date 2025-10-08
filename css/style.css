@@ -81,6 +81,7 @@ button {
     flex-direction: column;
     gap: var(--spacing-m);
     padding: 1em;
+    width: 83%;
 }
 
 .card {
@@ -108,8 +109,16 @@ button {
         width: 100%;
     }
 
+    .form-container {
+        width: 90%;
+    }
+
     .form-field {
         flex-direction: column;
         gap: var(--spacing-s);
+    }
+
+    .card-container {
+        width: 90%;
     }
 }
