@@ -89,6 +89,10 @@ button {
 }
 
 @media (max-width: 475px) {
+    .form-content {
+        width: 100%;
+    }
+
     .form-field {
         flex-direction: column;
         gap: var(--spacing-s);

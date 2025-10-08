@@ -1,4 +1,5 @@
 var btnSearch = document.getElementById('searchBtn');
+var clearBtn = document.getElementById('clearBtn');
 var inputParametre = document.getElementById('parameter');
 
 var select = document.getElementById('filter');
@@ -35,6 +36,11 @@ btnSearch.addEventListener('click', async function() {
     liste.forEach(anime => {
         createCard(anime);
     });
+});
+
+clearBtn.addEventListener('click', function() {
+    clearCards();
+    inputParametre.value = '';
 });
 
 
