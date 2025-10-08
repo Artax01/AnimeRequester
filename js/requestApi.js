@@ -1,4 +1,8 @@
-let API_KEY = prompt('Entre ta cle de API');
+// let API_KEY = prompt('Entre ta cle de API');
+let API_KEY = '8ecca23a5emsh63cc0179c3733aap180f72jsn0e721c1e4da9';
+
+
+
 
 
 

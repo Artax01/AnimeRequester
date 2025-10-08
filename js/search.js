@@ -24,11 +24,11 @@ btnSearch.addEventListener('click', async function() {
         createCard(reponse );  
     }
 
-    if (!reponse || !Array.isArray(reponse.data)) {
-        // console.error("La réponse ne contient pas de propriété 'data' valide :", reponse);
-        alert("Aucun résultat trouvé ou erreur lors de la recherche.");
-        return;
-    }
+    // if (!reponse || !Array.isArray(reponse.data)) {
+    //     // console.error("La réponse ne contient pas de propriété 'data' valide :", reponse);
+    //     alert("Aucun résultat trouvé ou erreur lors de la recherche.");
+    //     return;
+    // }
 
 
     let liste = [...reponse.data];
