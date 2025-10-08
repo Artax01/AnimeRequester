@@ -88,6 +88,20 @@ button {
     border: 1px solid var(--border-color);
 }
 
+@media (max-width: 1250px) {
+    img {
+        height: 50% !important;
+        width: 50% !important;
+        margin: auto;
+        border-radius: var(--roundness-l);
+        transition: .3s;
+    }
+
+    .card {
+        flex-direction: column;
+    }
+}
+
 @media (max-width: 475px) {
     .form-content {
         width: 100%;
@@ -96,9 +110,5 @@ button {
     .form-field {
         flex-direction: column;
         gap: var(--spacing-s);
-    }
-
-    .card {
-        flex-direction: column;
     }
 }
