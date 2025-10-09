@@ -16,7 +16,11 @@ btnSearch.addEventListener('click', async function() {
     if(select.value == 'byTitle'){
         reponse = await rechercheParNom(param);
     }else if(select.value == 'byGenre'){
-        reponse = await rechercheParGenre(param);
+        const checkedGenres = Array.from(document.querySelectorAll('#checkboxGroup input[type="checkbox"]:checked'))
+        .map(checkbox => checkbox.name);
+        console.log(checkedGenres);
+        reponse = await rechercheParGenre(checkedGenres.join(','));
+        // reponse = await rechercheParGenre(param);
     }else if(select.value == 'byId'){
         reponse = await rechercheParID(param);
         createCard(reponse);
