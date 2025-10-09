@@ -18,7 +18,7 @@ btnSearch.addEventListener('click', async function() {
     }else if(select.value == 'byGenre'){
         const checkedGenres = Array.from(document.querySelectorAll('#checkboxGroup input[type="checkbox"]:checked'))
         .map(checkbox => checkbox.name);
-        console.log(checkedGenres);
+        //console.log(checkedGenres);
         reponse = await rechercheParGenre(checkedGenres.join(','));
         // reponse = await rechercheParGenre(param);
     }else if(select.value == 'byId'){
@@ -53,7 +53,7 @@ select.addEventListener('change', function() {
             checkboxGroup.style.display = 'none';
             break;
         case 'byGenre':
-            console.log("genre");
+            //console.log("genre");
             paramField.style.display = 'none';
             checkboxGroup.style.display = 'block';
             createGenre();

@@ -1,5 +1,5 @@
 function createCard(data) {
-    console.log(data);
+    //console.log(data);
     const container = document.getElementById('card-container');
     if (data) {
         container.innerHTML += `

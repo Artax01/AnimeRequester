@@ -39,6 +39,6 @@ async function rechercheParID(id) {
 
 
 async function rechercheParGenre(genre) {
-    const url = 'https://anime-db.p.rapidapi.com/anime?page=1&size=100&genres=' + genre + '&sortBy=ranking&sortOrder=asc';
+    const url = 'https://anime-db.p.rapidapi.com/anime?page=1&size=50&genres=' + genre + '&sortBy=ranking&sortOrder=asc';
     return await fetchData(url, options);
 }
