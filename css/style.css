@@ -70,6 +70,10 @@ h1 {
     margin: auto;
     gap: var(--spacing-s);
 }
+.form-buttons button {
+    padding: 0.5em 5em 0.5em 5em;
+    background-color: var(--button-bg-color);
+}
 
 label {
     width: 100%;
@@ -96,7 +100,7 @@ button {
     padding: var(--spacing-xs) var(--spacing-s);
     border: none;
     border-radius: var(--roundness-s);
-    background-color: var(--button-bg-color);
+    background-color: rgba(0,0,0,0.85);
     color: var(--button-text-color);
     cursor: pointer;
 }
@@ -126,6 +130,19 @@ button {
 
     .card {
         flex-direction: column;
+    }
+}
+
+@media (max-width: 475px) {
+    .form-buttons {
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+    }
+
+    .form-buttons button {
+        display: flex;
+        justify-content: center;
     }
 }
 
