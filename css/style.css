@@ -14,6 +14,17 @@
     --roundness-s: 5px;
     --roundness-m: 8px;
     --roundness-l: 10px;
+    color: black
+}
+
+.dark-theme {
+    --button-bg-color: #1e40af;
+    --button-text-color: white;
+    --form-bg-color: #1f2937;
+    --input-bg-color: #374151;
+    --border-color: rgba(255, 255, 255, 0.1);
+    background-color: #111827;
+    color: white;
 }
 
 body {
@@ -23,6 +34,10 @@ body {
     align-items: center;
     padding-top: var(--spacing-m);
     gap: var(--spacing-m);
+}
+
+h1 {
+    font-size: 1.25em;
 }
 
 .form-content {
@@ -65,6 +80,16 @@ select, input {
     border-radius: var(--roundness-s);
     width: 100%;
     padding-left: var(--spacing-xs);
+}
+
+#toggleMoreFilter {
+    color: inherit;
+    margin: 0 16px;
+    padding: 6px 18px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    background: transparent;
+    cursor: pointer;
 }
 
 button {

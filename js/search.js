@@ -1,30 +1,33 @@
-var btnSearch = document.getElementById('searchBtn');
-var clearBtn = document.getElementById('clearBtn');
-var inputParametre = document.getElementById('parameter');
+const btnSearch = document.getElementById('searchBtn');
+const clearBtn = document.getElementById('clearBtn');
+const inputParametre = document.getElementById('parameter');
 
-var select = document.getElementById('filter');
-var paramField = document.getElementById('paramField');
-var checkboxGroup = document.getElementById('checkboxGroup');
+const select = document.getElementById('filter');
+const paramField = document.getElementById('paramField');
+const checkboxGroup = document.getElementById('checkboxGroup');
 
-btnSearch.addEventListener('click', async function() {
+btnSearch.addEventListener('click', async () => {
 
     param = inputParametre.value;
 
-    var reponse;
+    let reponse;
     clearCards();
 
-    if(select.value == 'byTitle'){
+    if(select.value == 'byTitle') {
         reponse = await rechercheParNom(param);
-    }else if(select.value == 'byGenre'){
-        const checkedGenres = Array.from(document.querySelectorAll('#checkboxGroup input[type="checkbox"]:checked'))
-        .map(checkbox => checkbox.name);
-        //console.log(checkedGenres);
+    } 
+
+    else if(select.value == 'byGenre') {
+        const checkedGenres = Array.from(document.querySelectorAll('#checkboxGroup input[type="checkbox"]:checked')).map(checkbox => checkbox.name);
         reponse = await rechercheParGenre(checkedGenres.join(','));
-        // reponse = await rechercheParGenre(param);
-    }else if(select.value == 'byId'){
+    } 
+
+    else if(select.value == 'byId') {
         reponse = await rechercheParID(param);
         createCard(reponse);
     }
+
+    if (reponse == null) return;
 
     let liste = [...reponse.data];
 
@@ -33,14 +36,14 @@ btnSearch.addEventListener('click', async function() {
     });
 });
 
-clearBtn.addEventListener('click', function() {
+clearBtn.addEventListener('click', () => {
     clearCards();
     inputParametre.value = '';
 });
 
 
-select.addEventListener('change', function() {
-    var selectedOption = select.value;
+select.addEventListener('change', () => {
+    let selectedOption = select.value;
     switch (selectedOption) {
         case 'byId':
             inputParametre.placeholder = 'Ex: 21';
@@ -53,7 +56,6 @@ select.addEventListener('change', function() {
             checkboxGroup.style.display = 'none';
             break;
         case 'byGenre':
-            //console.log("genre");
             paramField.style.display = 'none';
             checkboxGroup.style.display = 'block';
             createGenre();
@@ -65,6 +67,9 @@ select.addEventListener('change', function() {
 });
 
 
+document.getElementById('toggledarkModeBtn').addEventListener('click', function() {
+    document.body.classList.toggle('dark-theme');
+});
 
 document.getElementById('toggleMoreFilter').addEventListener('click', function() {
     const moreFilter = document.getElementById('moreFilter');

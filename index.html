@@ -8,15 +8,18 @@
         <link rel="stylesheet" href="css/style.css">
 
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-         <script defer src="js/requestApi.js"></script>
-        <script defer src="js/search.js"></script>
-        <script defer src="js/cards.js"></script>
-
-        
     </head>
     <body>
         <div class="form-content">
-            <h1>Anime Requester</h1>
+            <div class="flex justify-between w-full">
+                <div>
+                    <button id="setApiKeyBtn">API_KEY</button>
+                </div>
+                <h1>Anime Requester</h1>
+                <div>
+                    <button id="toggledarkModeBtn">THEME</button>
+                </div>
+            </div>
 
             <div class="form-container shadow">
                 <div class="form-field">
@@ -31,7 +34,9 @@
                 </div>
 
                 <div class="form-field" id="paramField">
-                    <label for="parameter">Entrez le paramètre</label>
+                    <label for="parameter">
+                        Entrez le paramètre
+                    </label>
                     <input type="text" id="parameter" placeholder="Paramètre">
                 </div>
 
@@ -39,7 +44,7 @@
 
                 <div style="display: flex; align-items: center; margin: 24px 0;">
                     <hr style="flex: 1; border: none; border-top: 1px solid #ccc;">
-                    <button id="toggleMoreFilter" style="color: blue; margin: 0 16px; padding: 6px 18px; border-radius: 20px; border: 1px solid #ccc; background: #f9f9f9; cursor: pointer;">
+                    <button id="toggleMoreFilter">
                         Afficher les filtres avancés
                     </button>
                     <hr style="flex: 1; border: none; border-top: 1px solid #ccc;">
@@ -72,14 +77,6 @@
                     </div>
                 </div>
 
-                
-
-                
-
-
-
-
-
                 <div class="form-field">
                     <div class="form-buttons">
                         <button id="searchBtn">Rechercher</button>
@@ -90,5 +87,9 @@
         </div>
 
         <div id="card-container" class="card-container"></div>
+
+        <script src="js/requestApi.js"></script>
+        <script src="js/search.js"></script>
+        <script src="js/cards.js"></script>
     </body>
 </html>

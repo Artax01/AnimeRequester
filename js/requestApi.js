@@ -1,33 +1,48 @@
-// let API_KEY = prompt('Entre ta cle de API');
-let API_KEY = '8ecca23a5emsh63cc0179c3733aap180f72jsn0e721c1e4da9';
-
-
-
+let API_KEY = setApiKey();
 const options = {
-	method: 'GET',
-	headers: {
-		'x-rapidapi-key': API_KEY,
-		'x-rapidapi-host': 'anime-db.p.rapidapi.com'
-	}
+    method: 'GET',
+    headers: {
+        'x-rapidapi-key': API_KEY,
+        'x-rapidapi-host': 'anime-db.p.rapidapi.com'
+    }
 };
+    
 
+function setApiKey() {
+    const key = prompt('Entrez votre clé de API :');
+
+    if (key && key != "" && key.length === 50) {
+        options.headers['x-rapidapi-key'] = key;
+        return key;
+    } else {
+        alert("Clé API invalide. Veuillez réessayer.");
+        return null;
+    }
+};
 
 async function fetchData(url, options) {
     try {
-        const response = await fetch(url, options);
-        const result = await response.json();
-        return result;
-    } catch (error) {
-        console.error(error);
-    }
+        if (API_KEY == null) return null;
 
+        let response  = await fetch(url, options);
+        let result = await response.json();
+        
+        if (response.status === 403) {
+            alert("Aucun résultat trouvé (Vérifier votre clé api) !");
+            return null;
+        }
+
+        return result;
+    
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 async function rechercheParNom(name) { 
-    var sort = document.querySelector('input[name="sort"]:checked').value;
-    var sortBy = document.querySelector('input[name="sortBy"]:checked').value;
-    const url = 'https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=' + name + '&sortBy=' +sort+'&sortOrder='+sortBy;
-    // fetchData(url, options);
+    let sort = document.querySelector('input[name="sort"]:checked').value;
+    let sortBy = document.querySelector('input[name="sortBy"]:checked').value;
+    const url = 'https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=' + name + '&sortBy=' + sort + '&sortOrder=' + sortBy;
     return await fetchData(url, options);
 }
 
@@ -42,3 +57,8 @@ async function rechercheParGenre(genre) {
     const url = 'https://anime-db.p.rapidapi.com/anime?page=1&size=50&genres=' + genre + '&sortBy=ranking&sortOrder=asc';
     return await fetchData(url, options);
 }
+
+
+document.getElementById('setApiKeyBtn').addEventListener('click', () => {
+    API_KEY = setApiKey();
+});
