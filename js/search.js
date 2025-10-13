@@ -7,29 +7,33 @@ const paramField = document.getElementById('paramField');
 const checkboxGroup = document.getElementById('checkboxGroup');
 
 btnSearch.addEventListener('click', async () => {
+    if (!isApiKeyValid(sessionStorage.getItem('API_KEY'))) return alert("Veuillez définir une clé API valide avant de continuer.");
 
-    param = inputParametre.value;
-
+    let param = inputParametre.value;
     let reponse;
     clearCards();
 
-    if(select.value == 'byTitle') {
-        reponse = await rechercheParNom(param);
-    } 
-
-    else if(select.value == 'byGenre') {
-        const checkedGenres = Array.from(document.querySelectorAll('#checkboxGroup input[type="checkbox"]:checked')).map(checkbox => checkbox.name);
-        reponse = await rechercheParGenre(checkedGenres.join(','));
-    } 
-
-    else if(select.value == 'byId') {
-        reponse = await rechercheParID(param);
-        createCard(reponse);
+    switch (select.value) {
+        case 'byTitle':
+            reponse = await rechercheParNom(param);
+            break;
+        case 'byGenre':
+            const checkedGenres = Array.from(document.querySelectorAll('#checkboxGroup input[type="checkbox"]:checked')).map(checkbox => checkbox.name);
+            reponse = await rechercheParGenre(checkedGenres.join(','));
+            break;
+        case 'byId':
+            if (isFinite(param) && !isNaN(param)) {
+                reponse = await rechercheParID(param);
+                if (reponse) createCard(reponse);
+            } 
+            else return alert('Veuillez entrer un ID valide (numérique).');
+            break;
+        default:
+            break;
     }
 
-    if (reponse == null) return;
-
-    let liste = [...reponse.data];
+    if (!reponse) return;
+    let liste = reponse.data ? [...reponse.data] : [reponse[0]];
 
     liste.forEach(anime => {
         createCard(anime);
@@ -41,31 +45,29 @@ clearBtn.addEventListener('click', () => {
     inputParametre.value = '';
 });
 
-
 select.addEventListener('change', () => {
-    let selectedOption = select.value;
-    switch (selectedOption) {
-        case 'byId':
-            inputParametre.placeholder = 'Ex: 21';
-            paramField.style.display = 'flex';
-            checkboxGroup.style.display = 'none';
-            break;
-        case 'byTitle':
-            inputParametre.placeholder = 'Ex: Naruto';
-            paramField.style.display = 'flex';
-            checkboxGroup.style.display = 'none';
-            break;
-        case 'byGenre':
-            paramField.style.display = 'none';
-            checkboxGroup.style.display = 'block';
-            createGenre();
-            break;
-        default:
-            paramField.style.display = 'flex';
-            checkboxGroup.style.display = 'none';
+    sessionStorage.setItem('SEARCH_FILTER', select.value);
+
+    paramField.style.display = 'flex';
+    checkboxGroup.style.display = 'none';
+
+    const placeholders = {
+        'byTitle': 'Ex: Naruto',
+        'byId': 'Ex: 21',
+        'byRang': 'Ex: 1'
+    };
+    inputParametre.placeholder = placeholders[select.value] || '';
+
+    if (select.value === 'byGenre') {
+        paramField.style.display = 'none';
+        checkboxGroup.style.display = 'block';
+        createGenre();
     }
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    select.value = 'byTitle';
+});
 
 document.getElementById('toggledarkModeBtn').addEventListener('click', function() {
     document.body.classList.toggle('dark-theme');

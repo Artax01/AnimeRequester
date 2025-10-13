@@ -29,16 +29,22 @@ function clearCards() {
     container.innerHTML = '';
 }
 
-function createGenre() {
-    const genres = ["Action", "Suspense", "Horror", "Ecchi", "Avant Garde", "Sports", "Supernatural", "Fantasy", "Gourmet", "Boys Love", "Drama", "Comedy", "Mystery", "Girls Love", "Slice of Life", "Adventure", "Sci Fi", "Erotica", "Hentai"];
+async function createGenre() {
     const checkboxGroup = document.getElementById('checkboxGroup');
-    checkboxGroup.innerHTML = '';
 
+    const genres = await getListeGenres();
+    if (!genres) {
+        checkboxGroup.innerHTML = '<p style="color:red;">Erreur lors du chargement des genres.</p>';
+        return;
+    }
+
+    checkboxGroup.innerHTML = '';
+    
     genres.forEach(genre => {
         checkboxGroup.innerHTML += `
             <div class="flex items-center">
-                <label for="${genre.split('').join('-')}">${genre}</label>
-                <input type="checkbox" name="${genre}" id="${genre.split('').join('-')}">
+                <label for="${genre["_id"].split('').join('-')}">${genre["_id"]}</label>
+                <input type="checkbox" name="${genre["_id"]}" id="${genre["_id"].split('').join('-')}">
             </div>
         `;
     });

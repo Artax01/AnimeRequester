@@ -7,6 +7,7 @@
     --button-text-color: white;
     --form-bg-color: #f9f9f9;
     --input-bg-color: #ccc;
+    --select-bg-color: transparent;
     --border-color: rgba(0, 0, 0, 0.1);
     --spacing-xs: 0.5em;
     --spacing-s: 1em;
@@ -22,9 +23,14 @@
     --button-text-color: white;
     --form-bg-color: #1f2937;
     --input-bg-color: #374151;
+    --select-bg-color: #1f2937;
     --border-color: rgba(255, 255, 255, 0.1);
     background-color: #111827;
     color: white;
+}
+
+.dark-theme h5 {
+    color: white !important;
 }
 
 body {
@@ -84,6 +90,7 @@ select, input {
     border-radius: var(--roundness-s);
     width: 100%;
     padding-left: var(--spacing-xs);
+    background: var(--select-bg-color);
 }
 
 #toggleMoreFilter {
@@ -103,6 +110,20 @@ button {
     background-color: rgba(0,0,0,0.85);
     color: var(--button-text-color);
     cursor: pointer;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+}
+
+.radio-label {
+    width: auto !important;
+}
+
+.filterRow {
+    display: flex;
+    gap: var(--spacing-s);
 }
 
 .card-container {
@@ -133,7 +154,17 @@ button {
     }
 }
 
-@media (max-width: 475px) {
+@media (max-width: 709px) {
+    .more-filter {
+        flex-direction: column;
+    }
+
+    .radio-group {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 659px) {
     .form-buttons {
         flex-direction: column;
         width: 100%;
@@ -162,5 +193,19 @@ button {
 
     .card-container {
         width: 90%;
+    }
+}
+
+@media (max-width: 329px) {
+    .radio-group {
+        flex-direction: column;
+        align-items: start;
+    }
+}
+
+@media (max-width: 259px) {
+    .filterRow {
+        flex-direction: column;
+        gap: 0;
     }
 }

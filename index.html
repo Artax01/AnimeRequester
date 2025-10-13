@@ -13,11 +13,11 @@
         <div class="form-content">
             <div class="flex justify-between w-full">
                 <div>
-                    <button id="setApiKeyBtn">API_KEY</button>
+                    <button id="setApiKeyBtn">API</button>
                 </div>
                 <h1>Anime Requester</h1>
                 <div>
-                    <button id="toggledarkModeBtn">THEME</button>
+                    <button id="toggledarkModeBtn">Theme</button>
                 </div>
             </div>
 
@@ -29,7 +29,6 @@
                         <option value="byId">Recherche par ID</option>
                         <option value="byRang">Recherche par rang</option>
                         <option value="byGenre">Recherche par genre</option>
-                        <option value="listOfGenres">Liste des genre</option>
                     </select>
                 </div>
 
@@ -37,7 +36,7 @@
                     <label for="parameter">
                         Entrez le paramètre
                     </label>
-                    <input type="text" id="parameter" placeholder="Paramètre">
+                    <input type="text" id="parameter" placeholder="Ex: Naruto">
                 </div>
 
                 <div class="checkbox-group mt-7" id="checkboxGroup" style="display: none;"></div>
@@ -52,27 +51,31 @@
 
 
                 
-                <div class="more-filter" id="moreFilter" style="display: none;">
-                    <div class="radio-group" id="sortGroup">
-                        <label for="filter">Classer par :</label>
-                        <div class="flex items-center">
-                            <input checked value="ranking" class="" type="radio" name="sort" id="rang">
-                            <label for="rang">Rang</label>
-                        </div>
-                        <div class="flex items-center mb-4">
-                            <input value="title"  class="" type="radio" name="sort" id="nom">
-                            <label for="nom">Nom</label>
+                <div class="more-filter justify-center" id="moreFilter" style="display: none; transition: .3s;">
+                    <div class="radio-group me-4" id="sortGroup">
+                        <label class="radio-label me-3" for="filter"><b>Classer par :</b></label>
+                        <div class="filterRow">
+                            <div class="flex items-center gap-1">
+                                <input checked value="ranking" class="" type="radio" name="sort" id="rang">
+                                <label for="rang">Rang</label>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <input value="name"  class="" type="radio" name="sort" id="nom">
+                                <label for="nom">Nom</label>
+                            </div>
                         </div>
                     </div>
                     <div class="radio-group" id="sortByGroup">
-                        <label for="filter">Ordre :</label>
-                        <div class="flex items-center">
-                            <input value="asc" checked class="" type="radio" name="sortBy" id="asc">
-                            <label for="asc">Croissant</label>
-                        </div>
-                        <div class="flex items-center mb-4">
-                            <input value="desc" class="" type="radio" name="sortBy" id="desc">
-                            <label for="desc">Décroissant</label>
+                        <label class="radio-label me-3" for="filter"><b>Ordre :</b></label>
+                        <div class="filterRow">
+                            <div class="flex items-center gap-1">
+                                <input value="asc" checked class="" type="radio" name="sortBy" id="asc">
+                                <label for="asc">Croissant</label>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <input value="desc" class="" type="radio" name="sortBy" id="desc">
+                                <label for="desc">Décroissant</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -88,9 +91,9 @@
 
         <div id="card-container" class="card-container"></div>
 
-        <script src="js/api.js"></script>
-        <script src="js/request.js"></script>
-        <script src="js/search.js"></script>
-        <script src="js/cards.js"></script>
+        <script defer src="js/api.js"></script>
+        <script defer src="js/request.js"></script>
+        <script defer src="js/search.js"></script>
+        <script defer src="js/cards.js"></script>
     </body>
 </html>

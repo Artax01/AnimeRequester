@@ -1,18 +1,16 @@
 async function fetchData(url, options) {
     try {
-        if (sessionStorage.getItem('API_KEY') == "") return null;
-
-        let response  = await fetch(url, options);
-        let result = await response.json();
-        
-        if (response.status === 403) {
-            alert("Aucun résultat trouvé (Vérifier votre clé api) !");
+        if (!isApiKeyValid(sessionStorage.getItem('API_KEY'))) {
+            alert("Veuillez définir une clé API valide avant de continuer.");
             return null;
         }
 
-        return result;
-    
-    } catch (error) {
+        let response = await fetch(url, options);
+        if (!checkResponseStatus(response)) return null;
+
+        return await response.json();
+    } 
+    catch (error) {
         console.log(error);
     }
 }
@@ -24,15 +22,18 @@ async function rechercheParNom(name) {
     return await fetchData(url, options);
 }
 
-
 async function rechercheParID(id) {
     const url = 'https://anime-db.p.rapidapi.com/anime/by-id/' + id + '?page=1&size=1';
     return await fetchData(url, options);
 }
 
-
 async function rechercheParGenre(genre) {
     const url = 'https://anime-db.p.rapidapi.com/anime?page=1&size=50&genres=' + genre + '&sortBy=ranking&sortOrder=asc';
+    return await fetchData(url, options);
+}
+
+async function getListeGenres() {
+    const url = 'https://anime-db.p.rapidapi.com/genre';
     return await fetchData(url, options);
 }
 
