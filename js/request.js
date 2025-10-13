@@ -1,28 +1,6 @@
-let API_KEY = setApiKey();
-const options = {
-    method: 'GET',
-    headers: {
-        'x-rapidapi-key': API_KEY,
-        'x-rapidapi-host': 'anime-db.p.rapidapi.com'
-    }
-};
-    
-
-function setApiKey() {
-    const key = prompt('Entrez votre clé de API :');
-
-    if (key && key != "" && key.length === 50) {
-        options.headers['x-rapidapi-key'] = key;
-        return key;
-    } else {
-        alert("Clé API invalide. Veuillez réessayer.");
-        return null;
-    }
-};
-
 async function fetchData(url, options) {
     try {
-        if (API_KEY == null) return null;
+        if (sessionStorage.getItem('API_KEY') == "") return null;
 
         let response  = await fetch(url, options);
         let result = await response.json();
@@ -60,5 +38,5 @@ async function rechercheParGenre(genre) {
 
 
 document.getElementById('setApiKeyBtn').addEventListener('click', () => {
-    API_KEY = setApiKey();
+    setApiKey(force=true);
 });
