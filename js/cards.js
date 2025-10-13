@@ -31,15 +31,17 @@ function clearCards() {
 
 async function createGenre() {
     const checkboxGroup = document.getElementById('checkboxGroup');
+    checkboxGroup.innerHTML = '';
 
-    const genres = await getListeGenres();
+    // mise en cache de la liste pour eviter de faire trop de requetes API
+    let genres = JSON.parse(sessionStorage.getItem('LISTE_GENRES')) || await getListeGenres();
+
     if (!genres) {
         checkboxGroup.innerHTML = '<p style="color:red;">Erreur lors du chargement des genres.</p>';
         return;
-    }
+    } 
 
-    checkboxGroup.innerHTML = '';
-    
+    sessionStorage.setItem('LISTE_GENRES', JSON.stringify(genres));
     genres.forEach(genre => {
         checkboxGroup.innerHTML += `
             <div class="flex items-center">
